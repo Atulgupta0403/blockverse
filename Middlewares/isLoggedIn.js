@@ -5,7 +5,7 @@ const User = require("../Models/userModel")
 const isLoggedIn = (req,res,next) => {
     const token = req.cookies.token;
     if(token){
-        const data = jwt.verify(token , "Secret");
+        const data = jwt.verify(token , process.env.SECRET);
         req.user = data;
     }
     else{
